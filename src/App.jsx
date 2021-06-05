@@ -21,6 +21,7 @@ const initializeAssistant = (getState/*: any*/) => {
   return createAssistant({ getState });
 };
 
+//let rand1=0;
 
 
 export class App extends React.Component {
@@ -28,7 +29,7 @@ export class App extends React.Component {
   constructor(props) {
     super(props);
     console.log('constructor');
-
+    
     this.state = {
       notes: [],
     }
@@ -36,8 +37,14 @@ export class App extends React.Component {
     this.assistant = initializeAssistant(() => this.getStateForAssistant() );
     this.assistant.on("data", (event/*: any*/) => {
       console.log(`assistant.on(data)`, event);
+      // console.log(`assistant.on(data)`, event.action);
+      // if(event.type==)
       const { action } = event
+      
       this.dispatchAssistantAction(action);
+
+      
+      
     });
     this.assistant.on("start", (event) => {
       console.log(`assistant.on(start)`, event);
@@ -113,9 +120,11 @@ export class App extends React.Component {
     let rand1 = Math.floor(Math.random() * 3);
     if(rand1==1){
       console.log('Верно!');
+      alert('Верно!')
     }
     else{
       console.log('Не угадал(');
+      alert(`Не угадал! Ответ:${rand1}`)
     }
   }
   dva (action) {
@@ -127,10 +136,13 @@ export class App extends React.Component {
     else{
       console.log('Не угадал(');
     }
+    
   }
+  
   tree (action) {
     console.log('ТРИ');
-    let rand1 = Math.floor(Math.random() * 3);
+    let rand1 = Math.floor(Math.random() * 3)
+    ;
     if(rand1==3){
       console.log('Верно!');
     }
@@ -156,8 +168,10 @@ export class App extends React.Component {
       notes: this.state.notes.filter(({ id }) => id !== action.id),
     })
   }
-
+  
   render() {
+    
+      
     console.log('render');
     return (
       // <TaskList
@@ -166,11 +180,8 @@ export class App extends React.Component {
       //   onDone = {(note) => { this.done_note({ type: "done_note", id: note.id }) }}
       // />
     <div>
-    
-      
-      
     <p >
-      <strong>Как играть:</strong> Используйте голосовые команды <strong>вверх, вниз, влево, вправо</strong> чтобы двигать блоки. Когда два блока с одинаковым значением соприкасаются, они{" "}
+      <strong>{}</strong> Используйте голосовые команды <strong>вверх, вниз, влево, вправо</strong> чтобы двигать блоки. Когда два блока с одинаковым значением соприкасаются, они{" "}
       <strong>объединяются в один!</strong>
     </p>
     </div>
