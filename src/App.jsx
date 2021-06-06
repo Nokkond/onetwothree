@@ -39,9 +39,23 @@ export class App extends React.Component {
       console.log(`assistant.on(data)`, event);
       // console.log(`assistant.on(data)`, event.action);
       // if(event.type==)
-      const { action } = event
+      // if ('action' in event) {
+        console.log(`action есть`);
+        const { action } = event
+    console.log(`assistant.on(data)`, action);
+    this.dispatchAssistantAction(action);
+    // } 
+    //  if ('insert' in event){
+    //   console.log(`insert есть`);
+    // }
+    // if ("charecter" in event){
+    //   console.log(`charecter есть`);
+    // }
       
-      this.dispatchAssistantAction(action);
+    // const { action } = event
+    // console.log(`assistant.on(data)`, action);
+    // this.dispatchAssistantAction(action);
+      
 
       
       
@@ -81,19 +95,19 @@ export class App extends React.Component {
     console.log('dispatchAssistantAction', action);
     if (action) {
       switch (action.type) {
-        case 'add_note':
-          return this.add_note(action);
+        // case 'add_note':
+        //   return this.add_note(action);
 
-        case 'done_note':
-          return this.done_note(action);
-        case 'delete_note':
-          return this.delete_note(action);
+        // case 'done_note':
+        //   return this.done_note(action);
+        // case 'delete_note':
+        //   return this.delete_note(action);
         case 'odin':
-            return this.odin(action);
+            return this.odin();
         case 'dva':
-            return this.dva(action); 
+            return this.dva(); 
         case 'tree':
-            return this.tree(action);       
+            return this.tree();       
 
         default:
           throw new Error();
