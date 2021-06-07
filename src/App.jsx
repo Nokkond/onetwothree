@@ -40,7 +40,7 @@ export class App extends React.Component {
       // console.log(`assistant.on(data)`, event.action);
       // if(event.type==)
       // if ('action' in event) {
-        console.log(`action есть`);
+        //console.log(`action есть`);
         
         //const { type } = event
         // if(type=='smart_app_data'){
