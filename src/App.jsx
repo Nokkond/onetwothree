@@ -41,9 +41,14 @@ export class App extends React.Component {
       // if(event.type==)
       // if ('action' in event) {
         console.log(`action есть`);
-        const { action } = event
-    console.log(`assistant.on(data)`, action);
-    this.dispatchAssistantAction(action);
+        
+        const { type } = event
+        if(type=='smart_app_data'){
+          const { action } = event;
+          console.log(`assistant.on(data)`, action);
+          this.dispatchAssistantAction(action);
+        }
+    
     // } 
     //  if ('insert' in event){
     //   console.log(`insert есть`);
@@ -87,9 +92,7 @@ export class App extends React.Component {
     return state;
   }
 
-  randomeNubmer (){
-    let rand1 = Math.floor(Math.random() * 4);
-  }
+  
 
   dispatchAssistantAction (action) {
     console.log('dispatchAssistantAction', action);
@@ -155,8 +158,7 @@ export class App extends React.Component {
   
   tree (action) {
     console.log('ТРИ');
-    let rand1 = Math.floor(Math.random() * 3)
-    ;
+    let rand1 = Math.floor(Math.random() * 3);
     if(rand1==3){
       console.log('Верно!');
     }
@@ -165,23 +167,23 @@ export class App extends React.Component {
     }
   }
 
-  done_note (action) {
-    console.log('done_note', action);
-    this.setState({
-      notes: this.state.notes.map((note) =>
-        (note.id === action.id)
-        ? { ...note, completed: !note.completed }
-        : note
-      ),
-    })
-  }
+  // done_note (action) {
+  //   console.log('done_note', action);
+  //   this.setState({
+  //     notes: this.state.notes.map((note) =>
+  //       (note.id === action.id)
+  //       ? { ...note, completed: !note.completed }
+  //       : note
+  //     ),
+  //   })
+  // }
 
-  delete_note (action) {
-    console.log('delete_note', action);
-    this.setState({
-      notes: this.state.notes.filter(({ id }) => id !== action.id),
-    })
-  }
+  // delete_note (action) {
+  //   console.log('delete_note', action);
+  //   this.setState({
+  //     notes: this.state.notes.filter(({ id }) => id !== action.id),
+  //   })
+  // }
   
   render() {
     
