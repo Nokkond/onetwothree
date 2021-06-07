@@ -42,12 +42,12 @@ export class App extends React.Component {
       // if ('action' in event) {
         console.log(`action есть`);
         
-        const { type } = event
-        if(type=='smart_app_data'){
+        //const { type } = event
+        // if(type=='smart_app_data'){
           const { action } = event;
           console.log(`assistant.on(data)`, action);
           this.dispatchAssistantAction(action);
-        }
+        //}
     
     // } 
     //  if ('insert' in event){
